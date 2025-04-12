@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Site de test automatisation</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; }
+    label, input, button { display: block; margin: 10px 0; }
+    table { border-collapse: collapse; margin-top: 20px; }
+    table, th, td { border: 1px solid black; padding: 8px; }
+  </style>
+</head>
+<body>
+
+  <h1>Bienvenue sur le site de test</h1>
+
+  <h2>Formulaire</h2>
+  <form id="formulaire">
+    <label for="nom">Nom :</label>
+    <input type="text" id="nom" name="nom">
+
+    <label for="email">Email :</label>
+    <input type="email" id="email" name="email">
+
+    <label><input type="checkbox" id="newsletter"> S'abonner à la newsletter</label>
+
+    <button type="submit">Envoyer</button>
+  </form>
+
+  <h2>Éléments d'action</h2>
+  <button id="clicTest">Clique ici</button>
+  <p id="message" style="color: green; font-weight: bold;"></p>
+
+  <h2>Tableau</h2>
+  <table>
+    <tr><th>Nom</th><th>Email</th></tr>
+    <tr><td>Alice</td><td>alice@example.com</td></tr>
+    <tr><td>Bob</td><td>bob@example.com</td></tr>
+  </table>
+
+  <script>
+    document.getElementById("clicTest").addEventListener("click", function() {
+      document.getElementById("message").textContent = "Tu as cliqué !";
+    });
+
+    document.getElementById("formulaire").addEventListener("submit", function(e) {
+      e.preventDefault();
+      alert("Formulaire soumis !");
+    });
+  </script>
+
+</body>
+</html>
