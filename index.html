@@ -1,52 +1,102 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Site de test automatisation</title>
+  <title>Automation Practice Site</title>
   <style>
-    body { font-family: Arial, sans-serif; padding: 20px; }
-    label, input, button { display: block; margin: 10px 0; }
-    table { border-collapse: collapse; margin-top: 20px; }
-    table, th, td { border: 1px solid black; padding: 8px; }
+    body { font-family: Arial, sans-serif; padding: 30px; max-width: 900px; margin: auto; background: #f4f4f4; }
+    h1, h2 { color: #2c3e50; }
+    .section { background: #fff; padding: 20px; border-radius: 8px; margin-bottom: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+    button, input, select { margin-top: 10px; padding: 10px; border-radius: 5px; border: 1px solid #ccc; }
+    table { border-collapse: collapse; width: 100%; margin-top: 10px; }
+    table, th, td { border: 1px solid #ccc; padding: 10px; text-align: left; }
+    .tab-content { display: none; }
+    .tab-content.active { display: block; }
+    .tabs button { margin-right: 10px; }
   </style>
 </head>
 <body>
 
-  <h1>Bienvenue sur le site de test</h1>
+  <h1>Automation Practice Site</h1>
 
-  <h2>Formulaire</h2>
-  <form id="formulaire">
-    <label for="nom">Nom :</label>
-    <input type="text" id="nom" name="nom">
+  <!-- Form Section -->
+  <div class="section">
+    <h2>Form</h2>
+    <form id="testForm">
+      <label for="name">Name:</label>
+      <input type="text" id="name">
 
-    <label for="email">Email :</label>
-    <input type="email" id="email" name="email">
+      <label for="email">Email:</label>
+      <input type="email" id="email">
 
-    <label><input type="checkbox" id="newsletter"> S'abonner à la newsletter</label>
+      <label><input type="checkbox" id="subscribe"> Subscribe to newsletter</label><br>
 
-    <button type="submit">Envoyer</button>
-  </form>
+      <button type="submit">Submit</button>
+    </form>
+  </div>
 
-  <h2>Éléments d'action</h2>
-  <button id="clicTest">Clique ici</button>
-  <p id="message" style="color: green; font-weight: bold;"></p>
+  <!-- Dropdown Section -->
+  <div class="section">
+    <h2>Dropdown</h2>
+    <label for="language">Choose a language:</label>
+    <select id="language">
+      <option value="js">JavaScript</option>
+      <option value="ts">TypeScript</option>
+      <option value="java">Java</option>
+    </select>
+  </div>
 
-  <h2>Tableau</h2>
-  <table>
-    <tr><th>Nom</th><th>Email</th></tr>
-    <tr><td>Alice</td><td>alice@example.com</td></tr>
-    <tr><td>Bob</td><td>bob@example.com</td></tr>
-  </table>
+  <!-- Alert Section -->
+  <div class="section">
+    <h2>Alert</h2>
+    <button onclick="alert('This is an alert!')">Show Alert</button>
+  </div>
+
+  <!-- Modal Section -->
+  <div class="section">
+    <h2>Modal</h2>
+    <button onclick="document.getElementById('modal').style.display='block'">Open Modal</button>
+    <div id="modal" style="display:none; background:#fff; padding:20px; border:1px solid #ccc; border-radius:8px; margin-top:10px;">
+      <p>This is a modal box. Click the button below to close it.</p>
+      <button onclick="document.getElementById('modal').style.display='none'">Close</button>
+    </div>
+  </div>
+
+  <!-- Tabs Section -->
+  <div class="section">
+    <h2>Tabs</h2>
+    <div class="tabs">
+      <button onclick="openTab('tab1')">Tab 1</button>
+      <button onclick="openTab('tab2')">Tab 2</button>
+    </div>
+    <div id="tab1" class="tab-content active">
+      <p>This is content from Tab 1.</p>
+    </div>
+    <div id="tab2" class="tab-content">
+      <p>This is content from Tab 2.</p>
+    </div>
+  </div>
+
+  <!-- Table Section -->
+  <div class="section">
+    <h2>Sample Table</h2>
+    <table>
+      <tr><th>Name</th><th>Email</th></tr>
+      <tr><td>Alice</td><td>alice@example.com</td></tr>
+      <tr><td>Bob</td><td>bob@example.com</td></tr>
+    </table>
+  </div>
 
   <script>
-    document.getElementById("clicTest").addEventListener("click", function() {
-      document.getElementById("message").textContent = "Tu as cliqué !";
+    document.getElementById("testForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      alert("Form submitted!");
     });
 
-    document.getElementById("formulaire").addEventListener("submit", function(e) {
-      e.preventDefault();
-      alert("Formulaire soumis !");
-    });
+    function openTab(id) {
+      document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+    }
   </script>
 
 </body>
